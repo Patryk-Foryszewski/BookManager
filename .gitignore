@@ -1,0 +1,22 @@
+# Django #
+__pycache__
+db.sqlite3
+staticfiles/
+
+# PyCharm #
+.idea/
+.iws/
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+
+# Environment
+venv/
+
+# Visual Studio Code #
+.vscode/*
+
+
+sandbox.py
+.DS_Store
