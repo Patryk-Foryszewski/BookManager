@@ -19,4 +19,8 @@ venv/
 
 
 sandbox.py
+
+#OS X
 .DS_Store
+
+.mypy_cache/*
