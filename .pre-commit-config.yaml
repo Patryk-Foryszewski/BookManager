@@ -4,25 +4,25 @@ repos:
     hooks:
       - id: black
         language_version: python3
-        exclude: ^$.html, /venv
+        exclude: ^$.html, .venv
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
       - id: end-of-file-fixer
-        exclude: ^$.html, /venv
+        exclude: ^$.html, .venv
   
-  # - repo: https://gitlab.com/pycqa/flake8
-  #   rev: 3.7.3
-  #   hooks:
-  #   -   id: flake8
-  #       exclude: ^$.html
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.7.3
+    hooks:
+      - id: flake8
+        exclude: ^$.html
 
   - repo: https://github.com/asottile/seed-isort-config
     rev: v2.2.0
     hooks:
       - id: seed-isort-config
-        exclude: ^$.html, , /venv
+        exclude: ^$.html, /venv
 
   - repo: https://github.com/pre-commit/mirrors-isort
     rev: v5.9.3
