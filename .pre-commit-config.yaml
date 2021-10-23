@@ -4,13 +4,13 @@ repos:
     hooks:
       - id: black
         language_version: python3
-        exclude: ^$.html
+        exclude: ^$.html, /venv
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
       - id: end-of-file-fixer
-        exclude: ^$.html
+        exclude: ^$.html, /venv
   
   # - repo: https://gitlab.com/pycqa/flake8
   #   rev: 3.7.3
@@ -22,7 +22,7 @@ repos:
     rev: v2.2.0
     hooks:
       - id: seed-isort-config
-        exclude: ^$.html
+        exclude: ^$.html, , /venv
 
   - repo: https://github.com/pre-commit/mirrors-isort
     rev: v5.9.3
@@ -35,7 +35,7 @@ repos:
     hooks:
       - id: pydocstyle
         files: ^bookmanager/
-        exclude: ^$.html
+        exclude: ^$.html, .venv
         
   - repo: local
     hooks:
