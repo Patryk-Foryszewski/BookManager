@@ -1,3 +1,4 @@
+from django import forms
 from django.forms import DateTimeInput, ModelForm
 
 from .models import Book
@@ -25,3 +26,12 @@ class BookAddEditForm(ModelForm):
                 }
             )
         }
+
+
+class GoogleSearchForm(forms.Form):
+    search = forms.CharField(max_length=200, required=False)
+    intitle = forms.CharField(max_length=200, required=False)
+    inauthor = forms.CharField(max_length=200, required=False)
+
+    def is_valid(self):
+        return super().is_valid()

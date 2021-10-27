@@ -1,0 +1,92 @@
+{% load books_tags %}
+    <form class="row col-12 col-md-12 col-xl-10 mx-auto" action="{{ action }}">
+        <div class="col-lg-2 px-1">
+            <input class="form-control"
+                   type="text"
+                   placeholder="Title"
+                   aria-label="Book title"
+                   name="title"
+                   value="{% get_value filter.form.title %}">
+        </div>
+
+        <div class="col-lg-2 px-1">
+            <input class="form-control"
+                   type="text"
+                   placeholder="Author"
+                   aria-label="Book author"
+                   name="author"
+                   value="{% get_value filter.form.author %}">
+        </div>
+
+        <div class="col-lg-2 px-1">
+            <input class="form-control"
+                   style="width: 100%;"
+                   type="text"
+                   placeholder="Date from"
+                   onfocus=(this.type='date')
+                   onblur=(this.type='text')
+                   aria-label="Book published date from"
+                   name="date_from"
+                   value="{% get_value filter.form.date_from %}">
+        </div>
+
+        <div class="col-lg-2 px-1">
+            <input class="form-control"
+                   style="width: 100%;"
+                   type="text"
+                   placeholder="Date to"
+                   onfocus=(this.type='date')
+                   onblur=(this.type='text')
+                   aria-label="Book published date to"
+                   name="date_to"
+                   value="{% get_value filter.form.date_to %}">
+
+        </div>
+
+        <div class="col-lg-2 px-1">
+            <select class="form-select text-secondary"
+                    aria-label="Disabled select example"
+                    name="language">
+                <option selected value="">{% language filter.form.language %}</option>
+
+                {% languages_list as l_list %}
+                {% for language in l_list %}
+
+                    <option value="{{ language.0 }}">{{ language.1 }}</option>
+
+                {% endfor %}
+
+            </select>
+         </div>
+        <div class="col-lg-2 px-1 text-start">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </form>
+
+
+{% comment %}
+{% load crispy_forms_tags %}
+# Inline form for crispy layout
+<form  action="{{ action }}" method="get">
+    {% csrf_token %}
+    <div class="row">
+      <div class="form-group col-md-2 ">
+            {{filter.form.title|as_crispy_field}}
+      </div>
+      <div class="form-group col-md-2 ">
+            {{filter.form.author|as_crispy_field}}
+      </div>
+      <div class="form-group col-md-2">
+            {{filter.form.language|as_crispy_field}}
+      </div>
+      <div class="form-group col-md-2">
+            {{filter.form.date_from|as_crispy_field}}
+      </div>
+      <div class="form-group col-md-2">
+            {{filter.form.date_to|as_crispy_field}}
+      </div>
+
+    </div>
+    <button class="btn btn-outline-secondary" type="submit">Search</button>
+</form>
+{% endcomment %}

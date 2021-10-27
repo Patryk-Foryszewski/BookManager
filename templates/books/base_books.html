@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load books_tags %}
+{% block content %}
+{% block books_app_content %}
+{% endblock books_app_content %}
+
+{% if is_paginated %}
+    {% pagination page_obj search%}
+{% endif %}
+
+{% endblock content %}

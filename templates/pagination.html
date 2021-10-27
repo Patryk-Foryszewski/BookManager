@@ -1,0 +1,15 @@
+<div>
+    {% for button in buttons %}
+        {% if button.current %}
+            <a class="btn btn-secondary mb-4"
+                href="?page={{ button.page }}&{{ query }}">
+                {{ button.text }}
+            </a>
+        {% else %}
+                <a class="btn btn-outline-secondary mb-4"
+                href="?page={{ button.page }}&{{ query }}">
+                {{ button.text }}
+            </a>
+        {% endif %}
+    {% endfor %}
+</div>

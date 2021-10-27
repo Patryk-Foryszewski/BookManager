@@ -1,0 +1,66 @@
+{% extends 'books/base_books.html' %}
+
+{% load books_tags %}
+{% block books_app_content %}
+
+<div class="p-2">
+    {% if import %}
+        <h4>Import books from GOOGLE</h4>
+        {% google_search_form query_dict%}
+    {% else %}
+        <div class="text-end pb-3" >
+            <a class="btn btn-primary" href="{% url 'books:add-form' %}" role="button">Add Book</a>
+        </div>
+        <div>
+            {% internal_search_form filter %}
+        </div>
+    {% endif %}
+</div>
+<div class="bg-light my-2 rounded">
+{% if books %}
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Published</th>
+          <th scope="col">ISBN_10</th>
+          <th scope="col">ISBN_13</th>
+          <th scope="col">Pages</th>
+          <th scope="col">Language</th>
+          <th scope="col">Cover</th>
+        </tr>
+      </thead>
+      <tbody class="rounded">
+        {% for book in books %}
+
+              {% if import %}
+                <tr onclick="location.href='{% url 'books:import-book'%}?id={{book.id}}'">
+              {% else %}
+                <tr onclick="location.href='{% url 'books:update' book.pk%}'">
+              {% endif %}
+
+              {% if is_paginated %}
+                <th scope="row">{{ page_obj.number|book_index:forloop.counter }}</th>
+              {% else %}
+                <th scope="row">{{ forloop.counter }}</th>
+              {% endif %}
+
+              <td>{{ book.title }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.published_date }}</td>
+              <td>{{ book.isbn_10 }}</td>
+              <td>{{ book.isbn_13 }}</td>
+              <td>{{ book.pages }}</td>
+              <td>{{ book.language }}</td>
+              <td>
+                    {% cover_frame book.cover_uri %}
+              </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endif %}
+{% endblock books_app_content%}
+</div>
