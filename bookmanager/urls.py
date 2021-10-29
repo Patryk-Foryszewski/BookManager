@@ -20,6 +20,10 @@ from django.views.generic import RedirectView
 
 from bookmanager.books.urls import urlpatterns as books_urls
 
+handler404 = "bookmanager.core.views.handle_404"
+handler400 = "bookmanager.core.views.handle_400"
+
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", RedirectView.as_view(url="books")),
