@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+import django_heroku
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -26,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG_VALUE") == "True"
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["stxnext-bookstore.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
@@ -43,7 +45,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
     "django_filters",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -77,6 +81,11 @@ TEMPLATES = [
 context_procesors = ["django.template.context_processors.static"]
 
 WSGI_APPLICATION = "bookmanager.wsgi.application"
+
+REST_FRAMEWORK = {
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    "SEARCH_PARAM": "search",
+}
 
 
 # Database
@@ -156,6 +165,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+django_heroku.settings(locals())
 
 DATE_INPUT_FORMATS = ["%Y-%m-%d"]
 
