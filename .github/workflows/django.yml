@@ -41,8 +41,8 @@ jobs:
           SYSTEM_ENV: GITHUB_WORKFLOW
 
 
-    # Run linters and Django related checks
-    - name: Run Linters and Checks
-      run: |
-        pre-commit run --all
-      if: ${{ always() }}
+      # Run linters and Django related checks
+      - name: Run Linters and Checks
+        run: |
+          pre-commit run --all
+        if: ${{ always() }}
