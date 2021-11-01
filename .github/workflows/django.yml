@@ -36,5 +36,6 @@ jobs:
     # Run linters and Django related checks
     - name: Run Linters and Checks
       run: |
+        python manage.py collectstatic
         pre-commit run --all
       if: ${{ always() }}
