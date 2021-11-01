@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "bookmanager.books.apps.BooksConfig",
+    "bookmanager.api.v1.books.apps.BooksApiConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
