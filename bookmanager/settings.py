@@ -144,11 +144,11 @@ MESSAGE_TAGS = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+PAGINATE_BY = 40
+
 STATIC_URL = "/static/"
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
-PAGINATE_BY = 40
 
 STATICFILES_DIRS = [("css", BASE_DIR / "bookmanager" / "static")]
 
