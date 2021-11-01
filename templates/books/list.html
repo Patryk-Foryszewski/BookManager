@@ -34,7 +34,6 @@
       </thead>
       <tbody class="rounded">
         {% for book in books %}
-
               {% if import %}
                 <tr onclick="location.href='{% url 'books:import-book'%}?id={{book.id}}'">
               {% else %}

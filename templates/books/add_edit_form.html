@@ -4,7 +4,8 @@
 
 {% block books_app_content %}
 <div class="bg-light m-2 p-2 rounded">
-  <form method="POST" action="{{ action }}">
+
+    <form method="POST" action="{{ action }}">
 
     {% csrf_token %}
     {{ form|crispy }}

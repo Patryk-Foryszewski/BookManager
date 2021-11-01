@@ -62,6 +62,9 @@ class BookUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context["action"] = reverse("books:update", kwargs={"pk": context["object"].pk})
         context["create"] = False
+        context["form"].initial["published_date"] = str(
+            context["form"].initial["published_date"]
+        )
         return context
 
 
