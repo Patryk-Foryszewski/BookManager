@@ -59,6 +59,7 @@ Part five:
 ##Links
 
 Website avalible under http://friendly-bookstore.herokuapp.com
+
 API Docs - http://friendly-bookstore.herokuapp.com/api/v1/books/docs
 
 ## Authors
